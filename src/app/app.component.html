@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col col-lg-6">
+      <div>
+       
+      <h1 [hidden]="isCross" class="text-center text-danger text-uppercase">{{ player1Name }} turn</h1>
+      <h1 [hidden]="!isCross" class="text-center text-danger text-uppercase">{{ player2Name }} turn</h1>
+    </div>
+
+    <div class="grid">
+      <div *ngFor=" let item of itemArray; index as i">
+        <div class="card">
+          <div class="card-box box" (click)='handleClick(i)'>
+            <app-icon [iconName]= 'item'></app-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <div class="col col-lg-6 text-center" *ngIf="winMessage">
+      <h1 class="text-uppercase">game over {{ winMessage }}</h1>
+      <button class="btn btn-danger text-uppercase pl-5 pr-5" (click)='ReloadGame()' >Reload game</button>
+    </div>
+    <div class="col col-lg-6 text-center" *ngIf="playerStatus">
+      <form  (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div>
+        <input type="text" class="text-center form-control form-control-lg" id="player1name" name="player1name" placeholder="Play as Circle" ngModel
+                  required />
+                </div>
+                <br>
+                <div>
+                  <input type="text" class="text-center form-control form-control-lg" id="player2name" name="player2name" placeholder="Play as Cross" ngModel
+                  required />
+                </div>
+                <br>
+                <div>
+                  <button class=" btn btn-light" type="submit">Enter</button>
+                </div>
+        </form>
+    </div>
+  </div>
+</div>
