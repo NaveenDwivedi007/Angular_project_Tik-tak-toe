@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center align-items-center">
     <div class="col col-lg-6">
-      <div>
+      <div [hidden]="task">
        
       <h1 [hidden]="isCross" class="text-center text-danger text-uppercase">{{ player1Name }} turn</h1>
       <h1 [hidden]="!isCross" class="text-center text-danger text-uppercase">{{ player2Name }} turn</h1>
@@ -35,7 +35,7 @@
                 </div>
                 <br>
                 <div>
-                  <button class=" btn btn-light" type="submit">Enter</button>
+                  <button class=" btn btn-success" type="submit">Enter</button>
                 </div>
         </form>
     </div>

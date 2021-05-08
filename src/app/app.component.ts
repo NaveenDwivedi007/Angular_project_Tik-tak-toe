@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr'
-import { stringify } from 'querystring';
-import { empty } from 'rxjs';
 import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-root',
@@ -12,6 +10,7 @@ export class AppComponent {
   title = 'tic-tac-toe';
   winMessage: string="";
   isCross = false;
+  task:boolean=true;
   player1Name:string="";
   player2Name:string="";
   playerStatus: boolean = true ;
@@ -96,6 +95,7 @@ export class AppComponent {
   ReloadGame=()=>{
     this.winMessage="";
     this.isCross= false;
+    this.task=true;
     this.playerStatus=true;
     this.itemArray= new Array(9).fill('empty');
     this.player1Name= "";
@@ -105,7 +105,7 @@ export class AppComponent {
     const {player1name,player2name} = f.form.value;
     this.player1Name= player1name;
     this.player2Name= player2name;
-    
+    this.task=false;
     if (this.player1Name && this.player2Name) {
       this.playerStatus = false;
       return this.toastr.success("start the game")
